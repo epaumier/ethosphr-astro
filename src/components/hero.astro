@@ -1,32 +1,37 @@
 ---
 import { Picture } from "@astrojs/image/components";
-import heroImage from "assets/hero.png";
+import IconImage from "assets/icon.jpeg";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
+
+<style>
+.exciting-text::after {
+  content: " R";
+  color: rgb(22 163 74);
+}
+</style>
 
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
     <Picture
-      src={heroImage}
+      src={IconImage}
       alt="Astronaut in the air"
       widths={[200, 400, 600]}
-      aspectRatio="4:3"
-      sizes="(max-width: 800px) 100vw, 620px"
+      sizes="(max-width: 200px) 50vw, 255px"
       loading="eager"
       format="avif"
     />
   </div>
   <div>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter exciting-text">
+      Ethosph'
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly create
-      any website with this starter.
+      Une association qui mène des actions pour la <wbr />
+      réhabilitation, la resocialisation et le bien-être des animaux.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
