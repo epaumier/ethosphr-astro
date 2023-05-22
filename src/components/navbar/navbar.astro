@@ -11,38 +11,36 @@ const t = useTranslations(lang);
 const menuitems = [
   {
     string: "nav.home",
-    path: `${lang}/about/`,
+    path: `about`,
   },
   {
     string: "nav.expertise",
-    // path: "#",
-    path: `${lang}`,
-    children: [
-      { string: "Action", path: "#" },
-      { string: "Another action", path: "#" },
-      { string: "Dropdown Submenu", path: "#" },
-    ],
+    path: `expertise`,
+  },
+  {
+    string: "nav.missions",
+    path: `missions`,
   },
   {
     string: "nav.contribute",
-    path: `${lang}/contribute/`,
+    path: `contribute`,
     children: [
-      { string: "Action", path: "#" },
-      { string: "Another action", path: "#" },
-      { string: "Dropdown Submenu", path: "#" },
+      { title: "nav.contribute.adherer", path: "#" },
+      { title: "Another action", path: "#" },
+      { title: "Dropdown Submenu", path: "#" },
     ],
   },
   {
     string: "nav.blog",
-    path: `${lang}/blog/`,
+    path: `blog`,
   },
   {
     string: "nav.team",
-    path: `${lang}/team/`,
+    path: `team`,
   },
   {
     string: "nav.contact",
-    path: `${lang}/contact/`,
+    path: `contact`,
   },
 ];
 ---
