@@ -4,64 +4,62 @@ import { Icon } from "astro-icon";
 
 const features = [
   {
-    title: "Bring Your Own Framework",
+    title: "Rehabilitation",
     description:
-      "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
+      "Réhabilitation & Suivi",
     icon: "bx:bxs-briefcase",
   },
   {
-    title: "100% Static HTML, No JS",
+    title: "Resocialisation",
     description:
-      "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
+      "De l'importance de vivre en groupe",
     icon: "bx:bxs-window-alt",
   },
   {
-    title: "On-Demand Components",
+    title: "Sensibilisation",
     description:
-      "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
+      "De l'importance du bien-être",
     icon: "bx:bxs-data",
   },
   {
-    title: "Broad Integration",
+    title: "Missions",
     description:
-      "Astro supports TypeScript, Scoped CSS, CSS Modules, Sass, Tailwind, Markdown, MDX, and any other npm packages.",
+      "Retrouvez l'intégralité de nos missions",
     icon: "bx:bxs-bot",
-  },
-  {
-    title: "SEO Enabled",
-    description:
-      "Automatic sitemaps, RSS feeds, pagination and collections take the pain out of SEO and syndication. It just works!",
-    icon: "bx:bxs-file-find",
-  },
-  {
-    title: "Community",
-    description:
-      "Astro is an open source project powered by hundreds of contributors making thousands of individual contributions.",
-    icon: "bx:bxs-user",
-  },
+  }
 ];
 ---
 
 <div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
-    Everything you need to start a website
+  <h2 class="text-2xl lg:text-2xl font-bold lg:tracking-tight">
+    Le bien-être et la protection des animaux constituent aujourd’hui une des préoccupations majeures de la société.
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    Astro comes batteries included. It takes the best parts of state-of-the-art
-    tools and adds its own innovations.
+    Ils suscitent des débats notamment sur le statut de l’animal et font l’objet de nombreuses publications scientifiques et de
+    vulgarisation.
+    Ces débats ont conduit à la modification du code civil en 2015 qui qualifie les animaux comme des êtres doués de sensibilité,
+    en particulier les vertébrés.
+  </p>
+  <p class="text-lg mt-4 text-slate-600">
+    Le bien-être animal et son évaluation constituent un objet de recherches complexe qui inclut le bien-être physique et la santé
+    mais également le bien-être psychologique. L’éthologie a fortement contribué à définir et évaluer le bien-être animal. Elle a notamment permis de mettre en évidence la richesse des comportements des animaux ainsi que leurs capacités à ressentir des émotions et à opérer des processus cognitifs complexes.
+  </p>
+  <p class="text-lg mt-4 font-bold">
+    Éthosph’R a été créé par des éthologistes et des personnes soucieuses de l’éthique animale afin de promouvoir la
+    resocialisation et la réhabilitation des animaux dans le but d’améliorer leur bien-être.
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="grid sm:grid-cols-2 md:grid-cols-4 mt-16 gap-16">
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
-        </div>
+      <div class="flex gap-4 bg-white border-2 border-black rounded-md p-10 text-white items-start">
+        {/* <div class="mt-1 rounded-full p-2 w-8 h-8 shrink-0">
+          <Icon class="text-black" name={item.icon} />
+        </div> */}
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          <h3 class="font-semibold text-black text-lg">{item.title}</h3>{" "}
+          <p class="text-black mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>
     ))
