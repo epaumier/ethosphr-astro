@@ -7,25 +7,25 @@ const features = [
     title: "Rehabilitation",
     description:
       "Réhabilitation & Suivi",
-    icon: "bx:bxs-briefcase",
+    icon: "bx:bxs-right-arrow-alt",
   },
   {
     title: "Resocialisation",
     description:
       "De l'importance de vivre en groupe",
-    icon: "bx:bxs-window-alt",
+    icon: "bx:bxs-right-arrow-alt",
   },
   {
     title: "Sensibilisation",
     description:
       "De l'importance du bien-être",
-    icon: "bx:bxs-data",
+    icon: "bx:bxs-right-arrow-alt",
   },
   {
     title: "Missions",
     description:
       "Retrouvez l'intégralité de nos missions",
-    icon: "bx:bxs-bot",
+    icon: "bx:bxs-right-arrow-alt",
   }
 ];
 ---
@@ -53,13 +53,16 @@ const features = [
 <div class="grid sm:grid-cols-2 md:grid-cols-4 mt-16 gap-16">
   {
     features.map((item) => (
-      <div class="flex gap-4 bg-white border-2 border-black rounded-md p-10 text-white items-start">
-        {/* <div class="mt-1 rounded-full p-2 w-8 h-8 shrink-0">
-          <Icon class="text-black" name={item.icon} />
-        </div> */}
+      <div class="relative flex gap-4 hover:cursor-pointer bg-gray-100  rounded-lg p-10 text-center items-start
+      transition ease-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-green-600 duration-300 hover:text-white">
+        <div class="absolute rounded-bl-2xl top-0 right-0 bg-green-600">
+          <div class=" p-3 w-10 h-10 ">
+            <Icon class="text-white" name={item.icon} />
+          </div>
+      </div>
         <div>
-          <h3 class="font-semibold text-black text-lg">{item.title}</h3>{" "}
-          <p class="text-black mt-2 leading-relaxed">{item.description}</p>
+          <h3 class="font-semibold  text-lg">{item.title}</h3>{" "}
+          <p class="mt-2 leading-relaxed">{item.description}</p>
         </div>
       </div>
     ))
