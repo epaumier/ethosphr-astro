@@ -3,7 +3,7 @@ export const languages = {
     fr: 'Français',
   };
 
-  export const defaultLang = 'en';
+  export const defaultLang = 'fr';
 
   export const ui = {
     en: {
@@ -15,6 +15,13 @@ export const languages = {
       'nav.team': 'Our team',
       'nav.blog': 'Blog',
       'nav.contact': 'Contact',
+      'page.contact.title': 'Contact',
+      'page.contact.desc': 'We are a here to help.',
+      'page.contact.form.name': 'Full name',
+      'page.contact.form.email': 'Email',
+      'page.contact.form.message': 'Your message',
+      'page.contact.form.send': 'Send Message',
+
     },
     fr: {
       'nav.home': 'Accueil',
@@ -25,6 +32,12 @@ export const languages = {
       'nav.team': 'Notre équipe',
       'nav.blog': 'Blog',
       'nav.contact': 'Contact',
+      'page.contact.title': 'Formulaire de contact',
+      'page.contact.desc': 'Envoyez nous un message.',
+      'page.contact.form.name': 'Nom et prénom',
+      'page.contact.form.email': 'Email',
+      'page.contact.form.message': 'Message',
+      'page.contact.form.send': 'Envoyer le message',
 
     },
   } as const;

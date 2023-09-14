@@ -9,6 +9,13 @@ import Sectionhead from "@components/sectionhead.astro";
 const publishedTeamMembers = await getCollection("team", ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
+
+export function getStaticPaths () {
+ return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'fr'}},
+  ];
+}
 ---
 
 <Layout title="About">
@@ -42,7 +49,7 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
                 background="#ffffff"
                 fit="cover"
                 position="center"
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
+                class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl"
               />
             </div>
 

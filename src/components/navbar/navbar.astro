@@ -4,7 +4,7 @@ import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import LanguagePicker from "./languagepicker.astro";
+import Languagepicker from "./languagepicker.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 const menuitems = [
   {
     string: "nav.home",
-    path: `/`,
+    path: `home`,
   },
   {
     string: "nav.expertise",
@@ -44,6 +44,9 @@ const menuitems = [
     path: `contact`,
   },
 ];
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(4); // remove the first "/"
 ---
 
 <Container>
@@ -75,7 +78,8 @@ const menuitems = [
                   <li>
                     <a
                       href={item.path}
-                      class="flex lg:px-3 py-2 text-gray-600 hover:text-gray-900">
+                      class={`flex lg:px-3 py-2 hover:text-gray-900 ${currentPath === item.path ? 'text-green-500' : 'text-gray-600}'}`}
+                    >
                       {t(item.string)}
                     </a>
                   </li>
@@ -89,7 +93,7 @@ const menuitems = [
           <Link href="#" size="md" block>Sign up</Link>
         </div> -->
       </MenuItems>
-      <LanguagePicker />
+      <Languagepicker />
     </Astronav>
     <!-- <div>
       <div class="hidden lg:flex items-center gap-4">
