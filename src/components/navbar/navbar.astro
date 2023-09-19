@@ -4,7 +4,7 @@ import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import Languagepicker from "./languagepicker.astro";
+import Languageswitcher from "./languageswitcher.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -77,7 +77,7 @@ const currentPath = pathname.slice(4); // remove the first "/"
                 {!item.children && (
                   <li>
                     <a
-                      href={item.path}
+                      href={'/' + lang +  '/' + item.path}
                       class={`flex lg:px-3 py-2 hover:text-gray-900 ${currentPath === item.path ? 'text-green-500' : 'text-gray-600}'}`}
                     >
                       {t(item.string)}
@@ -93,7 +93,7 @@ const currentPath = pathname.slice(4); // remove the first "/"
           <Link href="#" size="md" block>Sign up</Link>
         </div> -->
       </MenuItems>
-      <Languagepicker />
+      <Languageswitcher />
     </Astronav>
     <!-- <div>
       <div class="hidden lg:flex items-center gap-4">
