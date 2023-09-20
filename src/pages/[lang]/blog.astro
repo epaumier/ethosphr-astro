@@ -48,10 +48,6 @@ export function getStaticPaths () {
                     sizes="(max-width: 800px) 100vw, 800px"
                     width={200}
                     height={400}
-                    aspectRatio="16:9"
-                    background="#ffffff"
-                    fit="cover"
-                    position="center"
                     loading={index <= 2 ? "eager" : "lazy"}
                     decoding={index <= 2 ? "sync" : "async"}
                     class="w-full rounded-md"
