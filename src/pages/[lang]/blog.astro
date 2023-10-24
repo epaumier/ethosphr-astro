@@ -7,13 +7,14 @@ import Sectionhead from "@components/sectionhead.astro";
 import { useSanityClient } from "@sanity/astro";
 import { getSanityImageURL } from "@utils/all";
 
-const posts = await useSanityClient().fetch(`*[_type == "post" ] | order(publishedAt desc) {
+const posts = await useSanityClient().fetch(`*[_type == "post" ] {
     title,
     date,
     mainImage,
     category,
     publishedAt,
     author->{name},
+    slug,
   }
 `);
 
@@ -38,7 +39,7 @@ export function getStaticPaths () {
         {
           posts.map((blogPostEntry, index) => (
             <li>
-              <a href={`/blog/${blogPostEntry.slug}`}>
+              <a href={`/post/${blogPostEntry.slug.current}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
                   { blogPostEntry.mainImage?.asset._ref &&
                     <Image

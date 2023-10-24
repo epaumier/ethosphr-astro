@@ -1,0 +1,76 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import { useSanityClient } from "@sanity/astro";
+import Sectionhead from "@components/sectionhead.astro";
+import PortableText from "@components/portableText.astro";
+import { getSanityFileURL } from "@utils/all";
+import { getLangFromUrl } from "i18n/utils";
+
+// Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const posts = await useSanityClient().fetch(`*[_type == "post"] {
+    ...,
+    author->{name},
+  }`);
+
+  return posts.map(({ slug, title, category, author, publishedAt, body, videos }) => ({
+    params: { slug: slug.current },
+    props: { title, category, author, publishedAt, body, videos },
+  }));
+}
+const lang = getLangFromUrl(Astro.url);
+
+const { title, category, author, publishedAt, body, videos } = Astro.props;
+---
+
+<Layout title={title}>
+  <Container>
+    <div class="mx-auto max-w-[735px] mt-14">
+      <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
+        {category ?? 'undefined'}
+      </span>
+      <h1
+        class="text-4xl lg:text-5xl font-bold lg:tracking-tight mt-1 lg:leading-tight">
+        {title}
+      </h1>
+      <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
+        <span class="text-gray-400">
+          {author.name}
+        </span>
+        <span class="text-gray-400">•</span>
+        <time
+          class="text-gray-400"
+          datetime={publishedAt.slice(0, -14)}>
+          {publishedAt.slice(0, -14)}
+        </time>
+        <!-- <span class="text-gray-400 hidden md:block">•</span> -->
+        <!-- <div class="w-full md:w-auto flex flex-wrap gap-3">
+          {
+            entry.data.tags.map((tag) => (
+              <span class="text-sm text-gray-500">#{tag}</span>
+            ))
+          }
+        </div> -->
+      </div>
+    </div>
+
+    <div class="mx-auto prose prose-lg mt-6">
+        <!-- <Content /> -->
+        <PortableText portableText={body} />
+        { videos &&
+          <video width="320" height="240" controls class="m-auto">
+            <source src={getSanityFileURL(videos.asset._ref)} type="video/mp4">
+            <!-- <source src="movie.ogg" type="video/ogg"> -->
+          </video>
+        }
+    </div>
+    <div class="text-center mt-8">
+      <a
+        href=`/${lang}/blog`
+        class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
+        >← Back to Blog</a
+      >
+    </div>
+  </Container>
+</Layout>
