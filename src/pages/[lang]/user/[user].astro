@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import Icon from "astro-icon";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Filter team entries with 'draft: false' & date before current date
+// const publishedTeamMembers = await getCollection("team", ({ data }) => {
+//   return !data.draft && data.publishDate < new Date();
+// });
+
+export async function getStaticPaths() {
+  const teamEntries = await getCollection('team');
+  return teamEntries.map(entry => ({
+    params: { user: entry.slug, lang: 'fr' },  props: { entry },
+  }));
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+---
+
+<Layout title="Notre équipe">
+  <Container>
+    <a href="/fr/team" class="hover:text-green-700 mt-16 flex gap-2">
+      <Icon class="text-black block w-6 h-6 hover:text-green-700" name="bx:bx-arrow-back" />
+      Retour
+    </a>
+    <Image
+      src={entry.data.avatar.src}
+      alt={entry.data.avatar.alt}
+      sizes="(max-width: 800px) 100vw, 400px"
+      width={200}
+      height={400}
+      class="mx-auto mt-16 rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl"
+    />
+    <Sectionhead>
+      <Fragment slot="title">{entry.data.name}</Fragment>
+      <Fragment slot="desc">{entry.data.title}
+    </Fragment>
+    </Sectionhead>
+    <h1 class="whitespace-pre-line text-center mt-8">{entry.data.description}</h3>
+  </Container>
+</Layout>

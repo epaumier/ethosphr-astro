@@ -40,8 +40,10 @@ export const ui = {
     'page.contact.form.email': 'Email',
     'page.contact.form.message': 'Your message',
     'page.contact.form.send': 'Send Message',
-    'page.missions.title': pagesEn.filter(p => p.title === "Missions")[0].title,
-    'page.missions.subtitle': pagesEn.filter(p => p.title === "Missions")[0].subtitle,
+    'page.missions.title': "Missions",
+    'page.missions.subtitle': "Learn more about our missions",
+    'page.team.title': "Our team",
+    'page.team.subtitle': "Learn more about our staff",
 
   },
   fr: {
@@ -59,7 +61,9 @@ export const ui = {
     'page.contact.form.email': 'Email',
     'page.contact.form.message': 'Message',
     'page.contact.form.send': 'Envoyer le message',
-    'page.missions.title': pages.filter(p => p.title === "Missions")[0].title,
-    'page.missions.subtitle': pages.filter(p => p.title === "Missions")[0].subtitle,
+    'page.missions.title': "Missions",
+    'page.missions.subtitle': "Découvrez ci-dessous les missions de l'Association",
+    'page.team.title': "Notre équipe",
+    'page.team.subtitle': "Découvrez l'équipe Ethosph'R",
   },
 } as const;
