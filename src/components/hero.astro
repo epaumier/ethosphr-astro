@@ -1,34 +1,18 @@
 ---
-import { Image } from "astro:assets";
-import IconImage from "assets/icon.jpeg";
+import R from '@components/ui/icons/r.astro';
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon";
 ---
-
-<style>
-.exciting-text::after {
-  content: " R";
-  color: rgb(22 163 74);
-}
-</style>
-
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
-    <Image
-      src={IconImage}
-      alt="Astronaut in the air"
-      width={200}
-      height={400}
-      sizes="(max-width: 200px) 50vw, 255px"
-      loading="eager"
-      format="avif"
-    />
+    <R class="w-80 h-80" />
   </div>
   <div>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter exciting-text">
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
       Ethosph'
+      <span class="text-logo-300"> R</span>
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
       Une association qui mène des actions pour la <wbr />
