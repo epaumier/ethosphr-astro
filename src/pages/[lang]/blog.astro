@@ -4,19 +4,6 @@ import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import { useSanityClient } from "@sanity/astro";
-import { getSanityImageURL } from "@utils/all";
-
-// const posts = await useSanityClient().fetch(`*[_type == "post" ] {
-//     title,
-//     date,
-//     mainImage,
-//     category,
-//     publishedAt,
-//     author->{name},
-//     slug,
-//   }
-// `);
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {

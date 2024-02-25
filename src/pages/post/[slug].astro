@@ -1,27 +1,26 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
-import { useSanityClient } from "@sanity/astro";
-import Sectionhead from "@components/sectionhead.astro";
-import PortableText from "@components/portableText.astro";
-import { getSanityFileURL } from "@utils/all";
 import { getLangFromUrl } from "i18n/utils";
+import { getCollection, getEntry } from "astro:content";
 
-// Generate a new path for every collection entry
+
 export async function getStaticPaths() {
-  const posts = await useSanityClient().fetch(`*[_type == "post"] {
-    ...,
-    author->{name},
-  }`);
+  // Filter blog entries with 'draft: false' & date before current date
+  const posts = await getCollection("blog", ({ data }) => {
+    return !data.draft && data.publishDate < new Date();
+  });
 
-  return posts.map(({ slug, title, category, author, publishedAt, body, videos }) => ({
-    params: { slug: slug.current },
-    props: { title, category, author, publishedAt, body, videos },
+  return posts.map(({ slug, data: {title, category, author, publishDate: publishedAt } }) => ({
+    params: { slug: slug },
+    props: { title, category, author, publishedAt, videos: [] },
   }));
 }
+
 const lang = getLangFromUrl(Astro.url);
 
-const { title, category, author, publishedAt, body, videos } = Astro.props;
+const { title, category, author, publishedAt, videos } = Astro.props;
+const Body = await (await getEntry("blog", Astro.params.slug)).render();
 ---
 
 <Layout title={title}>
@@ -36,13 +35,13 @@ const { title, category, author, publishedAt, body, videos } = Astro.props;
       </h1>
       <div class="flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap">
         <span class="text-gray-400">
-          {author.name}
+          {author}
         </span>
         <span class="text-gray-400">•</span>
         <time
           class="text-gray-400"
-          datetime={publishedAt.slice(0, -14)}>
-          {publishedAt.slice(0, -14)}
+          datetime={publishedAt.toDateString()}>
+          {publishedAt.toDateString()}
         </time>
         <!-- <span class="text-gray-400 hidden md:block">•</span> -->
         <!-- <div class="w-full md:w-auto flex flex-wrap gap-3">
@@ -56,18 +55,18 @@ const { title, category, author, publishedAt, body, videos } = Astro.props;
     </div>
 
     <div class="mx-auto prose prose-lg mt-6">
-        <!-- <Content /> -->
-        <PortableText portableText={body} />
-        { videos &&
+      <!-- <Content /> -->
+      <Body.Content />
+        { /* videos &&
           <video width="320" height="240" controls class="m-auto">
             <source src={getSanityFileURL(videos.asset._ref)} type="video/mp4">
             <!-- <source src="movie.ogg" type="video/ogg"> -->
           </video>
-        }
+        */ }
     </div>
     <div class="text-center mt-8">
       <a
-        href=`/${lang}/blog`
+        href={`/${lang}/blog`}
         class="bg-gray-100 px-5 py-3 rounded-md hover:bg-gray-200 transition"
         >← Back to Blog</a
       >
