@@ -1,5 +1,5 @@
 ---
-title: "Resocialisation Rocco/Rosalie/Mireille (effectuée par Basma Malik)"
+title: "Resocialisation Rocco/Rosalie/Mireille"
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image:
   {
@@ -11,6 +11,7 @@ category: ""
 location: "Zoo refuge la Tanière"
 year: 2020
 species: "Macaque Rhésus"
+author: "Basma Malik"
 ---
 
 ## Contexte et objectifs

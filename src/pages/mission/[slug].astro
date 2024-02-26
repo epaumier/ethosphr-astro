@@ -10,15 +10,15 @@ export async function getStaticPaths() {
     return data.publishDate < new Date();
   });
 
-  return missions.map(({ slug, data: {title, publishDate: publishedAt, species, year } }) => ({
+  return missions.map(({ slug, data: {title, author, species, year } }) => ({
     params: { slug: slug },
-    props: { title, publishedAt, species, year },
+    props: { title, author, species, year },
   }));
 }
 
 const lang = getLangFromUrl(Astro.url);
 
-const { title, publishedAt, species, year } = Astro.props;
+const { title, author, species, year } = Astro.props;
 const Body = await (await getEntry("missions", Astro.params.slug)).render();
 ---
 
@@ -36,7 +36,13 @@ const Body = await (await getEntry("missions", Astro.params.slug)).render();
         <span class="text-gray-400">•</span>
         <div class="text-gray-400">
           {year}
-      </div>
+        </div>
+        { author &&
+          <span class="text-gray-400">•</span>
+          <div class="text-gray-400">
+            {author}
+          </div>
+        }
       </div>
     </div>
 

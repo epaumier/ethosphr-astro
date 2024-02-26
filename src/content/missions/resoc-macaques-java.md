@@ -1,5 +1,5 @@
 ---
-title: "Réunion de jeunes mâles macaques de Java (effectuée par Léo Perrin)"
+title: "Réunion de jeunes mâles macaques de Java"
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image:
   {
@@ -11,6 +11,7 @@ category: ""
 location: "Zoo refuge la Tanière"
 year: 2020
 species: "Macaques de Java (Macaca fascicularis)"
+author: "Léo Perrin"
 ---
 
 ## Contexte et objectifs

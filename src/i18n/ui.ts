@@ -13,6 +13,7 @@ export const ui = {
     "nav.contribute": "Contribute",
     "nav.contribute.adherer": "Membership",
     "nav.team": "Our team",
+    "nav.poles": "Our specialists",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
     "page.contact.title": "Contact",
@@ -25,6 +26,8 @@ export const ui = {
     "page.missions.subtitle": "Learn more about our missions",
     "page.team.title": "Our team",
     "page.team.subtitle": "Learn more about our staff",
+    "page.poles.title": "Our specialists",
+    "page.poles.subtitle": "Learn more about our specialities",
   },
   fr: {
     "nav.home": "Accueil",
@@ -33,6 +36,7 @@ export const ui = {
     "nav.contribute": "Participer",
     "nav.contribute.adherer": "Adhérer",
     "nav.team": "Notre équipe",
+    "nav.poles": "Nos pôles",
     "nav.blog": "Blog",
     "nav.contact": "Contact",
     "page.contact.title": "Formulaire de contact",
@@ -46,5 +50,7 @@ export const ui = {
       "Découvrez ci-dessous les missions de l'Association",
     "page.team.title": "Notre équipe",
     "page.team.subtitle": "Découvrez l'équipe Ethosph'R",
+    "page.poles.title": "Nos pôles",
+    "page.poles.subtitle": "Découvrez nos pôles de compétences",
   },
 } as const;

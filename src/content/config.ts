@@ -30,6 +30,7 @@ const teamCollection = defineCollection({
         alt: z.string(),
       }),
       publishDate: z.string().transform((str) => new Date(str)),
+      groups: z.array(z.string()),
     }),
 });
 
@@ -45,6 +46,7 @@ const missionsCollection = defineCollection({
     location: z.string(),
     species: z.string(),
     year: z.number(),
+    author: z.string().optional(),
   }),
 });
 

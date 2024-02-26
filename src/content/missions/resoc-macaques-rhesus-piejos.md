@@ -1,5 +1,5 @@
 ---
-title: "Étude des relations affiliatives et de la hiérarchie de dominance au sein d’un troupeau de 27 étalons et hongres (effectuée par Laura Piejos)"
+title: "Étude des relations affiliatives et de la hiérarchie de dominance au sein d’un troupeau de 27 étalons et hongres "
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image:
   {
@@ -11,6 +11,7 @@ category: ""
 location: "Zoo refuge la Tanière"
 year: 2020
 species: "Chevaux"
+author: "Laura Piejos"
 ---
 
 ## Contexte et objectifs

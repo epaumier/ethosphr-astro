@@ -64,14 +64,14 @@ export function getStaticPaths () {
                               {m.data.species}
                             </div>
                         </div>
-                        <!--
+                        { m.data.author &&
                           <div class="flex">
                             <Icon class="text-black block w-6 h-6" name="bx:bx-user-circle" />
                             <div class="my-auto">
-                              {m.data.author ?? "Anonyme"}
+                              {m.data.author}
                             </div>
                           </div>
-                          -->
+                        }
                       </div>
                 </div>
             </div>

@@ -2,19 +2,18 @@
 draft: false
 title: "Les 3R ou l’éthique dans la recherche scientifique"
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
-image: {
-    src: "https://ethosphr.com/wp-content/uploads/2020/11/3r-320x202.png",
-    alt: "image of the three Rs guaranteeing scientific ethics"
-}
+image:
+  {
+    src: "/src/assets/wordpress_media_library/3r.png",
+    alt: "image of the three Rs guaranteeing scientific ethics",
+  }
 publishDate: "2020-11-23 14:00"
 category: ""
 author: "Océane Schmitt"
 tags: [bien-être animal, éthologie]
 ---
 
-
-Les 3R ou l’éthique dans la recherche scientifique
-==================================================
+# Les 3R ou l’éthique dans la recherche scientifique
 
 ![Research and Practice in Replacement Reduction and Refinement - Master of Science in Human Toxicology and Risk Assessment - Masters Program - Graduate Programs - Environmental Health & Engineering - Johns Hopkins University](https://ehe.jhu.edu/sebin/d/k/replace-reduce-refine.png)
 
