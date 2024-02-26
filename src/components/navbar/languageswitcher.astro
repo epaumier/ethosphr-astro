@@ -1,12 +1,16 @@
 ---
 import { languages } from '../../i18n/ui';
+
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(4); // remove the first "/"
+const currentLang = Astro.params.lang as string;
 ---
-<ul class="flex space-x-2">
+<div class="flex">
   {Object.entries(languages).map(([lang, label]) => (
-    <li>
-      <a href={`/${lang}/${currentPath}`}>{label}</a>
-    </li>
+    <a class={`px-3 py-1.5 last:rounded-r border-2 border-slate-900 first:rounded-l ${currentLang === lang ? 'text-white bg-slate-900': ''}`}
+       href={`/${lang}/${currentPath}`}
+    >
+      {label}
+    </a>
   ))}
-</ul>
+</div>
