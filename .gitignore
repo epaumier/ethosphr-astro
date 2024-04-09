@@ -20,6 +20,3 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
-
-# old site files
-src/assets/wordpress_media_library

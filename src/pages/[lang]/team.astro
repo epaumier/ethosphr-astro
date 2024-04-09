@@ -6,6 +6,8 @@ import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
+import teamPic from "../../../src/assets/wordpress_media_library/irlteamlow.png";
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
@@ -89,11 +91,8 @@ export function getStaticPaths () {
 
       <h3 class="text-center text-2xl pt-24 pb-4">Les fondatrices</h3>
       <Image
-        src="/src/assets/wordpress_media_library/irlteamlow.png"
+        src={teamPic}
         alt="Photo des fondatrices de l'association"
-        sizes="(max-width: 800px) 100vw, 400px"
-        width={400}
-        height={800}
         class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl"
       />
       <div class="flex gap-4 justify-between px-20 pt-2">

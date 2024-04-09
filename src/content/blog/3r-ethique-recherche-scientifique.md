@@ -4,7 +4,7 @@ title: "Les 3R ou l’éthique dans la recherche scientifique"
 snippet: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image:
   {
-    src: "/src/assets/wordpress_media_library/3r.png",
+    src: "../../../src/assets/wordpress_media_library/3r.png",
     alt: "image of the three Rs guaranteeing scientific ethics",
   }
 publishDate: "2020-11-23 14:00"

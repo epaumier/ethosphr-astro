@@ -43,12 +43,11 @@ export function getStaticPaths () {
                     src={blogPostEntry.data.image.src}
                     alt={blogPostEntry.data.image.alt}
                     sizes="(max-width: 800px) 100vw, 800px"
-                    width={200}
-                    height={400}
                     loading={index <= 2 ? "eager" : "lazy"}
                     decoding={index <= 2 ? "sync" : "async"}
                     class="w-full rounded-md"
                     crossorigin="anonymous"
+                    inferSize={typeof blogPostEntry.data.image.src === "string"}
                     />
                   }
                   <div>
