@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
-import Sectionhead from "@components/sectionhead.astro";
+import Searchbar from "@components/searchbar.astro"; // Add this import
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -15,41 +15,35 @@ publishedBlogEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
 
-export function getStaticPaths () {
- return [
-    {params: {lang: 'en'}},
-    {params: {lang: 'fr'}},
-  ];
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
 }
 ---
 
 <Layout title="Blog">
   <Container>
-    <Sectionhead>
-      <Fragment slot="title">Our Blog</Fragment>
-      <Fragment slot="desc">
-        We write about building startups and thoughts going on our mind.
-      </Fragment>
-    </Sectionhead>
     <main class="mt-16">
-      <ul class="grid gap-16 max-w-4xl mx-auto">
+      <Searchbar />
+      <ul class="grid gap-16 max-w-4xl mx-auto" id="blogList">
         {
           publishedBlogEntries.map((blogPostEntry, index) => (
-            <li>
+            <li class="blog-item">
               <a href={`/post/${blogPostEntry.slug}`}>
                 <div class="grid md:grid-cols-2 gap-5 md:gap-10 items-center">
-                  { blogPostEntry.data.image.src &&
+                  {blogPostEntry.data.image.src && (
                     <Image
-                    src={blogPostEntry.data.image.src}
-                    alt={blogPostEntry.data.image.alt}
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    loading={index <= 2 ? "eager" : "lazy"}
-                    decoding={index <= 2 ? "sync" : "async"}
-                    class="w-full rounded-md"
-                    crossorigin="anonymous"
-                    inferSize={typeof blogPostEntry.data.image.src === "string"}
+                      src={blogPostEntry.data.image.src}
+                      alt={blogPostEntry.data.image.alt}
+                      sizes="(max-width: 800px) 100vw, 800px"
+                      loading={index <= 2 ? "eager" : "lazy"}
+                      decoding={index <= 2 ? "sync" : "async"}
+                      class="w-full rounded-md"
+                      crossorigin="anonymous"
+                      inferSize={
+                        typeof blogPostEntry.data.image.src === "string"
+                      }
                     />
-                  }
+                  )}
                   <div>
                     <span class="text-blue-400 uppercase tracking-wider text-sm font-medium">
                       {blogPostEntry.data.category}
@@ -80,3 +74,48 @@ export function getStaticPaths () {
     </main>
   </Container>
 </Layout>
+
+<script>
+  // Function to update the URL with the search term
+  function updateURL(searchTerm: string) {
+    const url = new URL(window.location.href);
+    if (searchTerm) {
+      url.searchParams.set("search", searchTerm);
+    } else {
+      url.searchParams.delete("search");
+    }
+    history.pushState({}, "", url);
+  }
+
+  // Function to filter blog items
+  function filterBlogItems(searchTerm: string) {
+    const blogItems = document.querySelectorAll<HTMLLIElement>(".blog-item")!;
+    blogItems.forEach((item) => {
+      const title = item.querySelector("h2")!.textContent!.toLowerCase();
+      if (title.includes(searchTerm.toLowerCase())) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const searchBar = document.querySelector<HTMLInputElement>(
+      'input[type="search"]'
+    )!;
+
+    // Set initial search term from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSearchTerm = urlParams.get("search") || "";
+    searchBar.value = initialSearchTerm;
+    filterBlogItems(initialSearchTerm);
+
+    // Add event listener for search input
+    searchBar.addEventListener("input", (e) => {
+      const searchTerm = (e.target as HTMLInputElement).value;
+      filterBlogItems(searchTerm);
+      updateURL(searchTerm);
+    });
+  });
+</script>

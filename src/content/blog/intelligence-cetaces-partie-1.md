@@ -13,14 +13,9 @@ tags: [bien-être animal, éthologie]
 ---
 
 
-L’intelligence des cétacés
-
-
-==============================
-
-![](https://ethosphr.com/wp-content/uploads/2023/03/Article-1-Dauphin-1-300x201.jpeg)
-
 Dans le monde, des centaines de cétacés sont détenus dans les bassins des delphinariums. La majorité de ces individus est née en captivité, d’autres ont été capturés à un très jeune âge dans la nature. Du fait de leurs capacités cognitives et de leur sensibilité très développées, la captivité des cétacés est très critiquée depuis plusieurs années, en particulier depuis les évènements ayant mené à la sortie du film Blackfish (2013). Les agressions perpétrées par l’orque Tilikum sur plusieurs des dresseurs du delphinarium SeaWorld ont permis de mettre en lumière les atteintes au bien-être des cétacés détenus captifs, comme le manque de stimulations sensorielles, sociales, cognitives et physiques. Nous vous proposons une série de deux articles qui porteront sur leur intelligence (capacités sensorielles, cognitives, sociales et émotionnelles), ainsi que sur les conséquences de la captivité sur leur bien-être.
+
+![](https://ethosphr.com/wp-content/uploads/2023/03/Article-1-Dauphin-1-scaled.jpeg)
 
 1\. Ecologie comportementale
 ----------------------------
@@ -38,7 +33,7 @@ Les réseaux sociaux complexes des cétacés leur demandent une mémoire à long
 
 Les travaux de Herman et ses collaborateurs menés dans les années 80 sur deux dauphins captifs démontrent qu’ils sont capables de comprendre le langage symbolique (Herman, 1986). L’équipe de Herman a mené une étude dans laquelle des (nouvelles) instructions d’actions avec des objets étaient données aux dauphins, en construisant des phrases selon des règles syntaxiques simples (par exemple : « amène la balle au le cerceau ») avec un vocabulaire de 40 items (mots). Dans leurs réponses (actions), les dauphins prennent en compte la composante sémantique (la signification des mots) et syntaxique (comment l’ordre des mots affecte la signification de l’instruction). Par exemple, les deux individus comprennent que la phrase “amène la balle au cerceau” est différente de “amène le cerceau à la balle”.
 
-![](https://ethosphr.com/wp-content/uploads/2023/03/Article-1-Baleine-1-300x201.jpeg "SONY DSC")
+![](https://ethosphr.com/wp-content/uploads/2023/03/Article-1-Baleine-1-scaled.jpeg "SONY DSC")
 
 Les dauphins comprennent rapidement quand un humain pointe un objet du doigt et y sont attentifs (Marino et al., 2007). Ils sont aussi capables de suivre le regard et d’interpréter la position de la tête d’un humain (Marino et al., 2007). A leur tour, ils peuvent utiliser leur rostre et l’alignement de leur corps pour pointer et diriger un humain vers un objet ou un lieu d’intérêt et vérifier si le récepteur humain leur prête bien attention (Marino et al., 2007). Cela illustre leur compréhension des relations entre eux et les autres, et leur capacité à prendre en compte la perspective d’autrui.
 
