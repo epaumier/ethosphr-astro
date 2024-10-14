@@ -3,12 +3,11 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Icon from "astro-icon";
-
+import Searchbar from "@components/searchbar.astro"; // Add this import
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedMissionEntries = await getCollection("missions", ({ data }) => {
@@ -20,64 +19,105 @@ publishedMissionEntries.sort(function (a, b) {
   return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
 });
 
-export function getStaticPaths () {
- return [
-    {params: {lang: 'en'}},
-    {params: {lang: 'fr'}},
-  ];
-};
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
+}
 ---
 
 <Layout title="Missions">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">{t('page.missions.title')}</Fragment>
-      <Fragment slot="desc">{t('page.missions.subtitle')}
-    </Fragment>
+      <Fragment slot="title">{t("page.missions.title")}</Fragment>
+      <Fragment slot="desc">{t("page.missions.subtitle")} </Fragment>
     </Sectionhead>
-    <input>
+    <Searchbar />
     <div class="mt-16">
-      {publishedMissionEntries.map(m =>
-      <a href={`/mission/${m.slug}`}>
-        <div class="flex justify-items-center mt-4 bg-gray-100 border border-green-500 p-5 w-10/12 m-auto cursor-pointer hover:bg-green-500">
-            <div class="flex grow-0 flex-col mx-auto">
+      {
+        publishedMissionEntries.map((m) => (
+          <a class="blog-item" href={`/mission/${m.slug}`}>
+            <div class="flex justify-items-center mt-4 bg-gray-100 border border-green-500 p-5 w-10/12 m-auto cursor-pointer hover:bg-green-500">
+              <div class="flex grow-0 flex-col mx-auto">
                 <div class="flex flex-col gap-8">
-                    <h2 class="font-bold text-2xl text-gray-800 m-auto text-center">
-                        {m.data.title}
-                    </h2>
-                    <div class="flex gap-10 justify-center">
-                        <div class="flex">
-                            <Icon class="text-black block w-6 h-6" name="bx:bx-map" />
-                            <div class="my-auto">
-                              {m.data.location}
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <Icon class="text-black block w-6 h-6" name="bx:bx-calendar" />
-                            <div class="my-auto">
-                                {m.data.year}
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <Icon class="text-black block w-6 h-6" name="bx:bx-dna" />
-                            <div class="my-auto">
-                              {m.data.species}
-                            </div>
-                        </div>
-                        { m.data.author &&
-                          <div class="flex">
-                            <Icon class="text-black block w-6 h-6" name="bx:bx-user-circle" />
-                            <div class="my-auto">
-                              {m.data.author}
-                            </div>
-                          </div>
-                        }
+                  <h2 class="font-bold text-2xl text-gray-800 m-auto text-center">
+                    {m.data.title}
+                  </h2>
+                  <div class="flex gap-10 justify-center">
+                    <div class="flex">
+                      <Icon class="text-black block w-6 h-6" name="bx:bx-map" />
+                      <div class="my-auto">{m.data.location}</div>
+                    </div>
+                    <div class="flex">
+                      <Icon
+                        class="text-black block w-6 h-6"
+                        name="bx:bx-calendar"
+                      />
+                      <div class="my-auto">{m.data.year}</div>
+                    </div>
+                    <div class="flex">
+                      <Icon class="text-black block w-6 h-6" name="bx:bx-dna" />
+                      <div class="my-auto">{m.data.species}</div>
+                    </div>
+                    {m.data.author && (
+                      <div class="flex">
+                        <Icon
+                          class="text-black block w-6 h-6"
+                          name="bx:bx-user-circle"
+                        />
+                        <div class="my-auto">{m.data.author}</div>
                       </div>
+                    )}
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-      </a>
-      )}
+          </a>
+        ))
+      }
     </div>
   </Container>
 </Layout>
+
+<script>
+  // Function to update the URL with the search term
+  function updateURL(searchTerm: string) {
+    const url = new URL(window.location.href);
+    if (searchTerm) {
+      url.searchParams.set("search", searchTerm);
+    } else {
+      url.searchParams.delete("search");
+    }
+    history.pushState({}, "", url);
+  }
+
+  // Function to filter blog items
+  function filterBlogItems(searchTerm: string) {
+    const blogItems = document.querySelectorAll<HTMLLIElement>(".blog-item")!;
+    blogItems.forEach((item) => {
+      const title = item.querySelector("h2")!.textContent!.toLowerCase();
+      if (title.includes(searchTerm.toLowerCase())) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    });
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const searchBar = document.querySelector<HTMLInputElement>(
+      'input[type="search"]'
+    )!;
+
+    // Set initial search term from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSearchTerm = urlParams.get("search") || "";
+    searchBar.value = initialSearchTerm;
+    filterBlogItems(initialSearchTerm);
+
+    // Add event listener for search input
+    searchBar.addEventListener("input", (e) => {
+      const searchTerm = (e.target as HTMLInputElement).value;
+      filterBlogItems(searchTerm);
+      updateURL(searchTerm);
+    });
+  });
+</script>
