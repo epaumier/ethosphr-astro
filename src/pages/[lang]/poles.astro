@@ -2,8 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import Pole from "@components/pole.astro";
 import { getLangFromUrl, useTranslations } from "i18n/utils";
-import { Image } from "astro:assets";
 
 import schmitt from "../../../src/assets/wordpress_media_library/DSCF0901-scaled.jpg";
 import laneyrie from "../../../src/assets/wordpress_media_library/IMG_8898.jpg";
@@ -11,73 +11,63 @@ import laneyrie from "../../../src/assets/wordpress_media_library/IMG_8898.jpg";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-export function getStaticPaths () {
- return [
-    {params: {lang: 'en'}},
-    {params: {lang: 'fr'}},
-  ];
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
 }
-
 ---
 
 <Layout title="Contact">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">{t('page.poles.title')}</Fragment>
-      <Fragment slot="desc">{t('page.poles.subtitle')}</Fragment>
+      <Fragment slot="title">{t("page.poles.title")}</Fragment>
+      <Fragment slot="desc">{t("page.poles.subtitle")}</Fragment>
     </Sectionhead>
-
-    <div class="mx-auto  mt-16">
-      <div>
-        <div class="text-center text-4xl pb-6">Pôle communication</div>
-        <div class="flex gap-20">
-            <div class="flex flex-col justify-center text-center">
-                <div class="pb-2"><b>Océane Schmitt</b></div>
-                <Image
-                    src={schmitt}
-                    alt="Océane Schmitt"
-                    class="border-1 border-green-500"
-                    sizes="(max-width: 800px) 100vw, 400px"
-                    width={400}
-                    height={800}
-                />
-            </div>
-            <div class="flex flex-col gap-4">
-                <div><b>Océane Schmitt</b> est la responsable du pôle communication depuis 2020. Titulaire d’un diplôme de doctorat depuis 2018, elle est une éthologue spécialisée dans le bien-être animal.</div>
-                <div>Principales missions du pôle :</div>
-                    <ul class="list-disc">
-                        <li>Création de publications pour nos comptes réseaux sociaux (Facebook, Instagram, LinkedIn) </li>
-                        <li>Production des newsletters pour les abonné·e·s </li>
-                        <li>Ecriture d’articles de vulgarisation pour le blog</li>
-                    </ul>
-            </div>
+    <div class="flex flex-col gap-4 pt-10">
+      <h2 class="text-center text-3xl pt-10">Pôle communication</h2>
+      <Pole fullName="Océane Schmitt" img={schmitt}>
+        <div>
+          <span class="font-semibold">Océane Schmitt</span> est la responsable du
+          pôle communication depuis 2020. Titulaire d’un diplôme de doctorat depuis
+          2018, elle est une éthologue spécialisée dans le bien-être animal.
         </div>
-      </div>
-
-      <div>
-        <div class="text-center text-4xl pb-6">Pôle juridique</div>
-        <div class="flex gap-20">
-            <div class="flex flex-col justify-center text-center">
-                <div class="pb-2"><b>Laurette Laneyrie</b></div>
-                <Image
-                    src={laneyrie}
-                    alt="Laurette Laneyrie"
-                    class="border-1 border-green-500"
-                    sizes="(max-width: 1200px) 100vw, 400px"
-                    width={1200}
-                    height={800}
-                />
-            </div>
-            <div class="flex flex-col gap-4">
-                <div>Laurette Laneyrie  est une juriste titulaire d’un master II en droit du numérique et forte d’une expérience de 6 ans en entreprise. Cavalière de longue date, elle s’est rapidement interrogée sur le bien être des chevaux et s’est renseignée sur leur sensibilité et sur la lecture et le décryptage de leurs comportements. Étendant bientôt cet intérêt à l’ensemble des animaux, elle a développé une véritable passion pour l’éthologie, qu’elle poursuit en autodidacte. Le respect de la condition animale est devenu une conviction qu’elle souhaite entretenir et partager.</div>
-                <div>Principales missions du pôle :</div>
-                    <ul class="list-disc">
-                        <li>Suivre l’évolution de la législation sur la protection animale</li>
-                        <li>Porter notre proposition de loi sur l’hébergement des équidés auprès du parlement.</li>
-                    </ul>
-            </div>
+        <div>Principales missions du pôle :</div>
+        <ul class="list-disc">
+          <li>
+            Création de publications pour nos comptes réseaux sociaux (Facebook,
+            Instagram, LinkedIn)
+          </li>
+          <li>Production des newsletters pour les abonné·e·s</li>
+          <li>Ecriture d’articles de vulgarisation pour le blog</li>
+        </ul>
+      </Pole>
+      <h2 class="text-center text-3xl pt-10">Pôle juridique</h2>
+      <Pole fullName="Laurette Laneyrie" img={laneyrie}>
+        <div class="flex flex-col gap-2">
+          <p>
+            <span class="font-semibold">Laurette Laneyrie</span> est une juriste
+            titulaire d’un master II en droit du numérique et forte d’une expérience
+            de 6 ans en entreprise. Cavalière de longue date, elle s’est rapidement
+            interrogée sur le bien être des chevaux et s’est renseignée sur leur
+            sensibilité et sur la lecture et le décryptage de leurs comportements.
+          </p>
+          <p>
+            Étendant bientôt cet intérêt à l’ensemble des animaux, elle a
+            développé une véritable passion pour l’éthologie, qu’elle poursuit
+            en autodidacte. Le respect de la condition animale est devenu une
+            conviction qu’elle souhaite entretenir et partager.
+          </p>
         </div>
-      </div>
+        <div>Principales missions du pôle :</div>
+        <ul class="list-disc">
+          <li>
+            Suivre l’évolution de la législation sur la protection animale
+          </li>
+          <li>
+            Porter notre proposition de loi sur l’hébergement des équidés auprès
+            du parlement.
+          </li>
+        </ul>
+      </Pole>
     </div>
   </Container>
 </Layout>

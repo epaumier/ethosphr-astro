@@ -50,7 +50,7 @@ export const ui = {
       "Découvrez ci-dessous les missions de l'Association",
     "page.team.title": "Notre équipe",
     "page.team.subtitle": "Découvrez l'équipe Ethosph'R",
-    "page.poles.title": "Nos pôles",
+    "page.poles.title": "Les différents pôles d'Ethosph'R",
     "page.poles.subtitle": "Découvrez nos pôles de compétences",
   },
 } as const;
