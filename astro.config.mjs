@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.ethosphr.com",
+  site: "https://ethosphr-astro.vercel.app",
   integrations: [
     tailwind(),
     mdx(),
