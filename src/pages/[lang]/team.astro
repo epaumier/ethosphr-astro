@@ -30,7 +30,7 @@ export function getStaticPaths () {
       <Fragment slot="title">{t('page.team.title')}</Fragment>
       <Fragment slot="desc">{t('page.team.subtitle')}</Fragment>
     </Sectionhead>
-
+    <div class="flex flex-col items-center">
     <h3 class="text-center text-2xl pt-24">Le conseil d'Administration</h3>
     <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
         {
@@ -82,14 +82,15 @@ export function getStaticPaths () {
           ))
         }
       </div>
-
-      <h3 class="text-center text-2xl pt-24 pb-4">Les fondatrices</h3>
+      <h3 class="text-2xl pt-24 pb-4">Les fondatrices</h3>
       <Image
         src={teamPic}
         alt="Photo des fondatrices de l'association"
-        class="w-full rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl"
+        class="rounded-md transition group-hover:-translate-y-1 group-hover:shadow-xl"
+        width={1000}
+        height={400}
       />
-      <div class="flex gap-4 justify-between px-20 pt-2">
+      <div class="flex justify-between gap-16 pt-2">
         <div>Laure Hoenen</div>
         <div>Sarah Lux</div>
         <div>Céline Bret</div>
@@ -97,7 +98,7 @@ export function getStaticPaths () {
         <div>Amélie Romain</div>
         <div>Odile Petit</div>
       </div>
-
+    </div>
 <div class="text-center pt-4">Une fondatrice ne figure pas sur la photo: Mathilde Valenchon.</div>
   </Container>
 </Layout>
