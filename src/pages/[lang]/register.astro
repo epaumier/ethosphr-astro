@@ -1,6 +1,10 @@
 ---
-import { isRegistered, registerUser } from "../../data/users"
-import { isValidEmail } from "../../utils/isValidEmail";
+// import { isRegistered, registerUser } from "../../data/users"
+// import { isValidEmail } from "../../utils/isValidEmail";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+import Layout from "@layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "i18n/utils";
 
 const errors = { username: "", email: "", password: "" };
 if (Astro.request.method === "POST") {
@@ -12,32 +16,65 @@ if (Astro.request.method === "POST") {
     if (typeof name !== "string" || name.length < 1) {
       errors.username += "Please enter a username. ";
     }
-    if (typeof email !== "string" || !isValidEmail(email)) {
-      errors.email += "Email is not valid. ";
-    } else if (await isRegistered(email)) {
-      errors.email += "Email is already registered. ";
-    }
+    // if (typeof email !== "string" || !isValidEmail(email)) {
+    //   errors.email += "Email is not valid. ";
+    // } else if (await isRegistered(email)) {
+    //   errors.email += "Email is already registered. ";
+    // }
     if (typeof password !== "string" || password.length < 6) {
       errors.password += "Password must be at least 6 characters. ";
     }
+  } catch (error) {
+    console.error("Error during registration:", error);
+  }
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "fr" } }];
 }
 ---
-<h1>Register</h1>
-<form method="POST">
-  <label>
-    Username:
-    <input type="text" name="username" required />
-  </label>
-  {errors.username && <p>{errors.username}</p>}
-  <label>
-    Email:
-    <input type="email" name="email" required />
-  </label>
-  {errors.email && <p>{errors.email}</p>}
-  <label>
-    Password:
-    <input type="password" name="password" required minlength="6" />
-  </label>
-  {errors.password && <p>{errors.password}</p>}''
-  <button>Submit</button>
-</form>
+
+<Layout title="Adhérer">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">{t("page.register.title")}</Fragment>
+      <Fragment slot="desc">{t("page.register.subtitle")}</Fragment>
+    </Sectionhead>
+    <div class="flex flex-col items-center gap-4 pt-4 ">
+      <p class="prose lg:prose-xl">
+        Les adhésions et dons sont nécessaires à la vie et au fonctionnement
+        d’Ethosph’R. <span class="text-gray-700 font-semibold">Vous souhaitez vous engager et soutenir nos expertises en
+        adhérant à l’association ?</span> Nous vous en remercions et vous invitons à
+        remplir ce formulaire afin de mieux vous connaître. Vous serez ensuite
+        automatiquement redirigé vers notre page d’adhésion hébergée chez
+        HelloAsso.
+        </p>
+        <p class="prose lg:prose-xl">
+          L’adhésion annuelle s’élève à 10€ et fonctionne par année civile. Vous
+          avez la possibilité d’associer un don à ce montant. Dans tous les cas,
+          vous recevrez un reçu fiscal en retour.
+        </p>
+      <form class="flex flex-col w-full prose lg:prose-xl" method="POST">
+        <label>
+          Username:
+          <input type="text" name="username" required />
+        </label>
+        {errors.username && <p>{errors.username}</p>}
+        <label>
+          Email:
+          <input type="email" name="email" required />
+        </label>
+        {errors.email && <p>{errors.email}</p>}
+        <label>
+          Password:
+          <input type="password" name="password" required minlength="6" />
+        </label>
+        {errors.password && <p>{errors.password}</p>}''
+        <button>Submit</button>
+      </form>
+    </div>
+  </Container>
+</Layout>

@@ -28,6 +28,10 @@ export const ui = {
     "page.team.subtitle": "Learn more about our staff",
     "page.poles.title": "Our specialists",
     "page.poles.subtitle": "Learn more about our specialities",
+    "page.register.title": "Registration form",
+    "page.register.subtitle": "",
+
+
   },
   fr: {
     "nav.home": "Accueil",
@@ -52,5 +56,8 @@ export const ui = {
     "page.team.subtitle": "Découvrez l'équipe Ethosph'R",
     "page.poles.title": "Les différents pôles d'Ethosph'R",
     "page.poles.subtitle": "Découvrez nos pôles de compétences",
+    "page.register.title": "Formulaire d'adhésion",
+    "page.register.subtitle": "",
+
   },
 } as const;
